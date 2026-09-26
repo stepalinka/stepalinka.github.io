@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Алина Степанова — художница из Москвы. Картины в наличии, серии работ и картина по фотографии на заказ.">
+<link rel="canonical" href="https://stepalinka-art.ru/">
+<title>Алина Степанова — художница, картины и живопись на заказ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alice&family=Onest:wght@300;400;500;600&display=swap">
+<style>
+  :root{
+    --page:#F6F4EF; --panel:#171814; --field:#FFFFFF;
+    --text:#1C1B18; --dim:#6B6862; --line:#E2DFD7; --line-2:#CFCABE;
+    --panel-text:#EDEAE1; --panel-dim:#9A968B; --panel-line:#2F3029;
+    --display:"Alice","PT Serif",Georgia,serif;
+    --body:"Onest","Helvetica Neue",Arial,sans-serif;
+    --side:296px;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--page);color:var(--text);font-family:var(--body);font-size:15.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  p{margin:0}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-weight:600}
+
+  .flag{background:var(--panel);color:var(--panel-dim);font-size:12px;text-align:center;padding:8px 16px}
+
+  /* ---------- раскладка ---------- */
+  .app{display:grid;grid-template-columns:1fr;min-height:100vh}
+  @media(min-width:960px){.app{grid-template-columns:var(--side) 1fr}}
+
+  .side{background:var(--panel);color:var(--panel-text);padding:clamp(20px,2vw,30px);display:flex;flex-direction:column;gap:24px}
+  @media(min-width:960px){.side{position:sticky;top:0;height:100vh;overflow-y:auto}}
+  .brand{font-family:var(--display);font-size:24px;line-height:1.12;text-decoration:none}
+  .brand span{display:block;font-family:var(--body);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--panel-dim);margin-top:10px}
+  .menu{list-style:none;margin:0;padding:0;display:grid;gap:1px;align-content:start;font-size:14.5px;flex:1}
+  .menu > li > a,.sub a{display:block;text-decoration:none;padding:7px 0;width:fit-content;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;cursor:pointer}
+  .menu > li > a:hover,.sub a:hover{color:#FFF;border-color:#FFF}
+  .menu a.on{color:#FFF;border-color:#FFF}
+  .sub{list-style:none;margin:3px 0 7px;padding:0 0 0 14px;display:grid;gap:0;border-left:1px solid var(--panel-line)}
+  .sub a{font-size:13px;color:var(--panel-dim);padding:5px 0}
+  .side-foot{border-top:1px solid var(--panel-line);padding-top:18px;display:grid;gap:13px;text-align:center}
+  .soc{display:flex;gap:14px;font-size:12.5px;color:var(--panel-dim);flex-wrap:wrap;justify-content:center}
+  .soc a{text-decoration:none}
+  .soc a:hover{color:#FFF}
+  .write{display:block;text-align:center;text-decoration:none;font-size:13px;font-weight:500;padding:12px 18px;border-radius:999px;background:#FFF;color:#171814;border:1px solid #FFF;transition:opacity .2s}
+  .write:hover{opacity:.85}
+
+  .main{padding:clamp(22px,3.2vw,56px);min-width:0}
+  .page{display:none;animation:fade .45s ease both}
+  .page.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.page{animation:none}*{transition:none!important}}
+
+  .crumb{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);font-weight:600}
+  h1.t{font-size:clamp(30px,3.8vw,48px);font-weight:400;letter-spacing:-.005em;margin:14px 0 16px}
+  .lede{color:var(--dim);max-width:62ch;font-size:15.5px}
+  .meta-row{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--dim)}
+  .meta-row b{color:var(--text);font-weight:500}
+
+  /* ---------- работы ---------- */
+  .grid{display:grid;gap:clamp(16px,2vw,28px);grid-template-columns:repeat(auto-fill,minmax(205px,1fr));margin-top:clamp(22px,2.6vw,36px)}
+  .work{display:flex;flex-direction:column;min-width:0}
+  .fig{background:var(--field);border:1px solid var(--line);height:250px;display:flex;align-items:center;justify-content:center;padding:14px;overflow:hidden;transition:border-color .3s}
+  .fig img{max-height:100%;max-width:100%;width:auto;height:auto;min-width:0;min-height:0;object-fit:contain;transition:transform .5s}
+  .work:hover .fig{border-color:var(--text)}
+  .work:hover .fig img{transform:scale(1.03)}
+  .work h4{font-size:18px;margin-top:13px}
+  .work .spec{font-size:12px;color:var(--dim);margin-top:5px;line-height:1.5}
+  .work .story{font-size:12.5px;color:var(--dim);margin-top:8px;font-style:italic}
+  .row{margin-top:auto;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .price{font-family:var(--display);font-size:18px;font-variant-numeric:tabular-nums}
+  .buy{font-size:11.5px;text-decoration:none;border:1px solid var(--line-2);border-radius:999px;padding:6px 14px;transition:all .25s;cursor:pointer}
+  .buy:hover{background:var(--text);color:var(--page);border-color:var(--text)}
+
+  .chapter{margin-top:clamp(26px,3vw,44px);padding-top:clamp(20px,2.4vw,32px);border-top:1px solid var(--line)}
+  .chapter:first-of-type{border-top:0;padding-top:0}
+  .chapter h3{font-size:clamp(20px,2vw,26px);font-weight:400}
+  .chapter .ch-lede{color:var(--dim);font-size:14px;margin-top:8px;max-width:60ch}
+
+  /* ---------- выставки ---------- */
+  .expo{padding-block:clamp(26px,3vw,42px);border-top:1px solid var(--line)}
+  .expo:first-of-type{border-top:0;padding-top:clamp(18px,2vw,26px)}
+  .expo-head{display:flex;gap:14px;justify-content:space-between;align-items:baseline;flex-wrap:wrap}
+  .expo h3{font-size:clamp(19px,1.9vw,25px);font-weight:400}
+  .expo .when{font-size:12.5px;color:var(--dim);white-space:nowrap}
+  .expo .where{font-size:13.5px;color:var(--dim);margin-top:6px}
+  .expo .about{margin-top:12px;max-width:62ch;font-size:14.5px;color:var(--dim)}
+  .shots{display:grid;gap:clamp(10px,1.2vw,16px);grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin-top:18px}
+  .shots.big{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+  .shots figure{margin:0;background:var(--field);border:1px solid var(--line);overflow:hidden}
+  .shots img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;transition:transform .6s}
+  .shots.wide img{aspect-ratio:16/10}
+  .shots figure:hover img{transform:scale(1.04)}
+  .shots.doc img{object-fit:contain;aspect-ratio:auto;background:var(--field)}
+  .badge{display:inline-block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:1px solid var(--line-2);border-radius:999px;padding:4px 11px;color:var(--dim)}
+
+  /* ---------- об авторе ---------- */
+  .about-grid{display:grid;gap:clamp(22px,3vw,48px);grid-template-columns:1fr;margin-top:clamp(20px,2.4vw,34px)}
+  @media(min-width:880px){.about-grid{grid-template-columns:320px 1fr}}
+  .about-txt p+p{margin-top:14px}
+  .pull{font-family:var(--display);font-size:clamp(18px,1.9vw,24px);line-height:1.3;border-left:1px solid var(--text);padding-left:20px;margin:24px 0;max-width:34ch}
+  .cv{display:grid;gap:26px;grid-template-columns:1fr;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+  @media(min-width:640px){.cv{grid-template-columns:repeat(2,1fr);gap:28px 40px}}
+  .cv h4{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-family:var(--body);font-weight:600;color:var(--dim);margin-bottom:11px}
+  .cv ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:13.5px}
+  .cv li b{font-weight:500;display:block}
+  .cv li span{color:var(--dim)}
+
+  /* ---------- заказ ---------- */
+  /* ---------- вопросы-ответы ---------- */
+  .faq{margin-top:16px;max-width:64ch;border-top:1px solid var(--line)}
+  .faq-i{border-bottom:1px solid var(--line)}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;
+    font-family:var(--body);font-size:15.5px;font-weight:500;color:var(--text);text-align:left;
+    background:none;border:0;padding:16px 0;cursor:pointer;transition:color .2s}
+  .faq-q:hover{color:var(--dim)}
+  .faq-q:focus-visible{outline:1px solid var(--text);outline-offset:3px}
+  .pm{position:relative;flex:0 0 13px;height:13px}
+  .pm::before,.pm::after{content:"";position:absolute;background:var(--text);transition:transform .35s cubic-bezier(.22,.7,.2,1)}
+  .pm::before{left:0;right:0;top:6px;height:1px}
+  .pm::after{top:0;bottom:0;left:6px;width:1px}
+  .faq-i.open .pm::after{transform:scaleY(0)}
+  .faq-i.open .pm::before{transform:rotate(180deg)}
+  .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.22,.7,.2,1)}
+  .faq-i.open .faq-a{grid-template-rows:1fr}
+  .faq-a > div{overflow:hidden}
+  .faq-a p{font-size:14.5px;color:var(--dim);padding-bottom:18px;max-width:58ch}
+  html.anim .faq-i{opacity:0;transform:translateY(12px)}
+  html.anim .faq.in .faq-i{opacity:1;transform:none;transition:opacity .5s ease,transform .5s cubic-bezier(.22,.7,.2,1)}
+  html.anim .faq.in .faq-i:nth-child(2){transition-delay:.08s}
+  html.anim .faq.in .faq-i:nth-child(3){transition-delay:.16s}
+  html.anim .faq.in .faq-i:nth-child(4){transition-delay:.24s}
+  html.anim .faq.in .faq-i:nth-child(5){transition-delay:.32s}
+  /* ---------- анимация шагов ---------- */
+  .steps-track{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:30px;height:11px}
+  .steps-track::before{content:"";position:absolute;left:19px;right:19px;top:5px;height:1px;background:var(--line-2)}
+  .steps-track i{width:11px;height:11px;border-radius:50%;background:var(--page);border:1px solid var(--line-2);margin-left:14px;position:relative;z-index:1}
+  html.anim .steps-track::before{transform:scaleX(0);transform-origin:left}
+  html.anim .steps-track.in::before{transform:scaleX(1);transition:transform 1.4s cubic-bezier(.3,.7,.2,1)}
+  html.anim .steps-track i{opacity:0;transform:scale(.3)}
+  html.anim .steps-track.in i{opacity:1;transform:none;transition:opacity .45s ease,transform .45s cubic-bezier(.3,1.4,.5,1)}
+  html.anim .steps-track.in i:nth-child(2){transition-delay:.3s}
+  html.anim .steps-track.in i:nth-child(3){transition-delay:.6s}
+  html.anim .steps-track.in i:nth-child(4){transition-delay:.9s}
+  .steps-track.in i{background:var(--text);border-color:var(--text)}
+  html.anim .steps .step{opacity:0;transform:translateY(16px)}
+  html.anim .steps.in .step{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.22,.7,.2,1)}
+  html.anim .steps.in .step:nth-child(2){transition-delay:.3s}
+  html.anim .steps.in .step:nth-child(3){transition-delay:.6s}
+  html.anim .steps.in .step:nth-child(4){transition-delay:.9s}
+  .step b{transition:color .3s}
+  .steps .step:hover b{color:var(--text)}
+  .steps{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:14px}
+  .step{border:1px solid var(--line);padding:18px;background:var(--field)}
+  .step b{display:block;font-family:var(--display);font-size:23px;margin-bottom:8px}
+  .step p{font-size:13.5px;color:var(--dim)}
+  table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+  .table-wrap{overflow-x:auto;margin-top:26px;max-width:620px}
+  table.pt{table-layout:fixed}
+  table.pt th:first-child,table.pt td:first-child{width:46%}
+  table.pt th:not(:first-child),table.pt td:not(:first-child){text-align:right;width:27%}
+  th,td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line)}
+  th{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:600}
+  td:last-child{text-align:right;white-space:nowrap}
+  .fine{font-size:12.5px;color:var(--dim);margin-top:13px}
+
+  /* ---------- контакты ---------- */
+  .clist{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:18px;max-width:42ch}
+  .clist span{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+  .clist a{font-family:var(--display);font-size:21px;text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:2px}
+  .clist a:hover{border-color:var(--text)}
+  .clist em{display:block;font-style:normal;font-size:12.5px;color:var(--dim);margin-top:6px}
+
+  .cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:clamp(24px,3vw,38px)}
+  .card{border:1px solid var(--line);background:var(--field);padding:20px;text-decoration:none;display:block;transition:border-color .25s}
+  .card:hover{border-color:var(--text)}
+  .card h4{font-size:19px;margin-bottom:6px}
+  .card p{font-size:13px;color:var(--dim)}
+
+  .hero-img{border:1px solid var(--line);background:var(--field);margin-top:clamp(20px,2.4vw,32px);max-width:520px}
+  .hero-img img{width:100%;height:auto}
+  .hero-cap{font-size:12.5px;color:var(--dim);margin-top:10px;max-width:520px}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <aside class="side">
+    <a class="brand" href="#" data-go="home">Алина<br>Степанова<span>Художница · Москва</span></a>
+    <ul class="menu">
+      <li><a data-go="home">Главная</a></li>
+      <li><a data-go="works">Работы</a>
+        <ul class="sub">
+          <li><a data-go="iznutri">Серия «Изнутри»</a></li>
+          <li><a data-go="holmy">Серия «Холмы»</a></li>
+          <li><a data-go="trava">Серия «Когда трава была выше»</a></li>
+          <li><a data-go="siluet">Серия «Силуэт»</a></li>
+          <li><a data-go="otdelno">Отдельные работы</a></li>
+        </ul>
+      </li>
+      <li><a data-go="order">Картина по фото</a></li>
+      <li><a data-go="expo">Выставки</a></li>
+      <li><a data-go="about">Об авторе</a></li>
+      <li><a data-go="contacts">Контакты</a></li>
+    </ul>
+    <div class="side-foot">
+      <div class="soc">
+        <a href="https://t.me/sss_tt_ep">Телеграм</a>
+        <a href="https://t.me/stepalink">Канал</a>
+        <a href="https://instagram.com/stepalinka">Инстаграм</a>
+      </div>
+      <a class="write" data-go="contacts">Написать мне</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section class="page on" id="page-home">
+      <p class="crumb">Живопись · Москва</p>
+      <h1 class="t">Картины про то,<br>где мы выросли</h1>
+      <p class="lede">Пишу пейзажи о панельках, дворах и деревенском детстве. Второе направление — объёмные работы из глины, ткани и воска. Можно купить готовую картину из серии или заказать работу по своей фотографии: дом, двор, место, которого больше нет. Живу в Москве, отправляю работы по России.</p>
+      <figure class="hero-img" style="margin-left:0;margin-right:0">
+        <img src="img/01.jpg" alt="Алина Степанова на открытии персональной выставки в галерее «Беляево»">
+      </figure>
+      <p class="hero-cap">Открытие персональной выставки «Когда трава была выше», галерея «Беляево», декабрь 2025</p>
+      <div class="cards">
+        <a class="card" data-go="iznutri"><h4>Серия «Изнутри»</h4><p>Объёмные работы из глины, ткани, стекла и воска</p></a>
+        <a class="card" data-go="holmy"><h4>Серия «Холмы»</h4><p>Крупные пейзажи после поездок по регионам России</p></a>
+        <a class="card" data-go="trava"><h4>«Когда трава была выше»</h4><p>Проект о взрослении в трёх главах</p></a>
+        <a class="card" data-go="order"><h4>Картина по вашему фото</h4><p>Дом, двор или место, которого больше нет</p></a>
+      </div>
+    </section>
+    <section class="page" id="page-works">
+      <p class="crumb">Каталог</p>
+      <h1 class="t">Работы</h1>
+      <p class="lede">Оригиналы: живопись акрилом и маслом, объёмные работы из глины, ткани, стекла и воска. Каждая картина существует в единственном экземпляре. Помогу подобрать размер под стену.</p>
+      <div class="cards">
+        <a class="card" data-go="iznutri"><h4>Изнутри</h4><p>Человек: ткань, глина, свечи, стекло</p></a>
+        <a class="card" data-go="holmy"><h4>Холмы</h4><p>Крупные пейзажи из поездок по России</p></a>
+        <a class="card" data-go="trava"><h4>Когда трава была выше</h4><p>Проект о взрослении в трёх главах</p></a>
+        <a class="card" data-go="siluet"><h4>Силуэт</h4><p>Небольшая серия о женщинах</p></a>
+        <a class="card" data-go="otdelno"><h4>Отдельные работы</h4><p>Работы вне серий</p></a>
+      </div>
+    </section>
+    <section class="page" id="page-iznutri">
+      <p class="crumb">Работы · Серия</p>
+      <h1 class="t">Изнутри</h1>
+      <p class="lede">Исследование внутренних процессов и эмоций личности. Ткань, глина, свечи, стекло — работы в объёме, попытка стереть грань между творчеством и внутренним миром человека. Объёмные картины на стену в смешанной технике, каждая в одном экземпляре.</p>
+      
+      <div class="grid">
+        <article class="work">
+          <div class="fig"><img src="img/02.jpg" alt="Объёмная работа: фигура со свечой среди множества восковых свечей" loading="lazy"></div>
+          <h4>разГОРИсь</h4>
+          <p class="spec">2026 · смешанная техника: восковые свечи, клей, акрил, холст<br>70 × 70 см</p>
+          <p class="story">Отражение состояния выгорания.</p>
+          <div class="row"><span class="price">48 500 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/03.jpg" alt="Объёмная работа: разорванное пополам лицо, соединённое золотом, среди фарфоровых лиц" loading="lazy"></div>
+          <h4>postscriptum</h4>
+          <p class="spec">2026 · смешанная техника: папье-маше, самозастывающая глина, акрил, холст<br>50 × 50 см</p>
+          <p class="story">Отображение раскола личности. Эта работа вошла в декорации фильма «Когда Атлант устанет».</p>
+          <div class="row"><span class="price">48 500 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/04.jpg" alt="Объёмная работа: женская фигура со спины, трещины по телу, белая ткань" loading="lazy"></div>
+          <h4>Ранимость</h4>
+          <p class="spec">2026 · смешанная техника: глина, стекло, ткань, акрил, холст<br>50 × 70 см</p>
+          <p class="story">Уязвимость и внутреннее истощение.</p>
+          <div class="row"><span class="price">45 400 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/05.jpg" alt="Объёмная работа: лицо с повязкой на глазах среди белых пионов" loading="lazy"></div>
+          <h4>Красота</h4>
+          <p class="spec">2024 · смешанная техника: текстурная паста, акрил, ткань<br>50 × 70 см</p>
+          <p class="story">Аллегория внутреннего состояния.</p>
+          <div class="row"><span class="price">45 400 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+      </div>
+    </section>
+    <section class="page" id="page-holmy">
+      <p class="crumb">Работы · Серия</p>
+      <h1 class="t">Холмы</h1>
+      <p class="lede">Проект о красоте природного пейзажа. Основную часть работы занимают холмы, но внутри разворачивается сюжет. Крупные работы, 80 × 120 и 100 × 120 см: такие берут в гостиную или в переговорную. Каждая написана после поездки в один из регионов России.</p>
+      
+      <div class="grid">
+        <article class="work">
+          <div class="fig"><img src="img/06.jpg" alt="Картина: женщина на коленях в холмах смотрит на заброшенный храм в закатном свете" loading="lazy"></div>
+          <h4>Я снова ничего не поняла</h4>
+          <p class="spec">2025–2026 · холст, акрил<br>100 × 120 см</p>
+          <div class="row"><span class="price">115 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/07.jpg" alt="Картина: вид из арочного окна на зелёные холмы с овцами и пастухом" loading="lazy"></div>
+          <h4>За окном</h4>
+          <p class="spec">2025 · холст, акрил<br>80 × 120 см · в раме</p>
+          <div class="row"><span class="price">67 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+      </div>
+    </section>
+    <section class="page" id="page-trava">
+      <p class="crumb">Работы · Серия</p>
+      <h1 class="t">Когда трава была выше</h1>
+      <p class="lede">Проект о взрослении, показанный на персональной выставке в галерее «Беляево». Картины про детство, советские дворы и пятиэтажки: попытка вернуться в прошлое, чтобы лучше понять настоящее. Три главы — беззаботное время, подростковая теснота и взгляд вперёд.</p>
+      
+      <div class="chapter">
+        <h3>Глава I. Где всё начиналось</h3>
+        <p class="ch-lede">Беззаботное время, первые воспоминания, ощущение безопасности.</p>
+      <div class="grid">
+        <article class="work">
+          <div class="fig"><img src="img/08.jpg" alt="Картина: зимняя деревенская улица ночью, светящиеся окна домов" loading="lazy"></div>
+          <h4>Детство. Волшебная зима</h4>
+          <p class="spec">2025 · холст, акрил<br>50 × 50 см</p>
+          <div class="row"><span class="price">15 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/09.jpg" alt="Картина: две девушки на веранде деревенского дома среди яблок" loading="lazy"></div>
+          <h4>Фруктовая феерия</h4>
+          <p class="spec">2024 · холст, акрил<br>50 × 70 см</p>
+          <div class="row"><span class="price">15 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/10.jpg" alt="Картина: деревянные сараи в высокой траве под облачным небом" loading="lazy"></div>
+          <h4>Утро</h4>
+          <p class="spec">2023 · холст, акрил<br>50 × 70 см</p>
+          <div class="row"><span class="price">10 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/11.jpg" alt="Картина: две девочки на качелях над панельным домом" loading="lazy"></div>
+          <h4>Детство. Беззаботное лето</h4>
+          <p class="spec">2025 · холст, акрил<br>50 × 50 см</p>
+          <div class="row"><span class="price">8 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+      </div>
+      </div>
+      <div class="chapter">
+        <h3>Глава II. Когда стало тесно</h3>
+        <p class="ch-lede">Подростковый период, поиск себя, вечера у подъезда, одиночество.</p>
+      <div class="grid">
+        <article class="work">
+          <div class="fig"><img src="img/12.jpg" alt="Триптих: три холста с панельными домами на закате" loading="lazy"></div>
+          <h4>Триптих «Где попало»</h4>
+          <p class="spec">2024 · холст, акрил<br>40 × 50, 30 × 40, 20 × 30 см</p>
+          <div class="row"><span class="price">12 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/13.jpg" alt="Картина: подростки играют в футбол на закате у пятиэтажек" loading="lazy"></div>
+          <h4>Юность. Весна</h4>
+          <p class="spec">2025 · холст, акрил<br>50 × 50 см</p>
+          <div class="row"><span class="price">9 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/14.jpg" alt="Картина: подросток на качелях в ночном дворе" loading="lazy"></div>
+          <h4>Раз в году</h4>
+          <p class="spec">2023 · холст, акрил<br>30 × 40 см</p>
+          <div class="row"><span class="price">6 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/15.jpg" alt="Картина: двое подростков на ступенях у общежития осенью" loading="lazy"></div>
+          <h4>Поганая молодежь</h4>
+          <p class="spec">2023 · холст, акрил<br>30 × 40 см</p>
+          <div class="row"><span class="price">6 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+      </div>
+      </div>
+      <div class="chapter">
+        <h3>Глава III. Мы станем лучше</h3>
+        <p class="ch-lede">Вера в то, что всё было не зря. Финальная глава — движение вперёд, не уверенное, но неизбежное.</p>
+      <div class="grid">
+        <article class="work">
+          <div class="fig"><img src="img/16.jpg" alt="Картина: ночной двор панельного дома, надпись «Мы станем лучше» на крыше" loading="lazy"></div>
+          <h4>Мы станем лучше</h4>
+          <p class="spec">2023 · холст, акрил<br>75 × 100 см</p>
+          <p class="story">Финальная глава проекта: взгляд в будущую взрослую жизнь.</p>
+          <div class="row"><span class="price">45 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+      </div>
+      </div>
+    </section>
+    <section class="page" id="page-siluet">
+      <p class="crumb">Работы · Серия</p>
+      <h1 class="t">Силуэт</h1>
+      <p class="lede">Небольшая серия о женщинах. Разные женские тела показывают, насколько они могут быть разными: каждое индивидуально и особенно по-своему, и в этом его сила. Формат 18 × 24 см в раме: такие работы часто берут в подарок или ставят на полку.</p>
+      <p class="lede" style="margin-top:14px">Вся серия из пяти работ целиком — 14 000 ₽.</p>
+      <div class="grid">
+        <article class="work">
+          <div class="fig"><img src="img/17.jpg" alt="Работа: женская фигура на белом рельефном фоне, красная рама" loading="lazy"></div>
+          <h4>Силуэт. Картина 1</h4>
+          <p class="spec">2026 · акрил, текстурная паста<br>18 × 24 см · в раме</p>
+          <div class="row"><span class="price">3 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/18.jpg" alt="Работа: женская фигура со спины, охристые линии, охристая рама" loading="lazy"></div>
+          <h4>Силуэт. Картина 2</h4>
+          <p class="spec">2026 · акрил, текстурная паста<br>18 × 24 см · в раме</p>
+          <div class="row"><span class="price">3 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/19.jpg" alt="Работа: женская фигура с руками за головой, чёрная рама" loading="lazy"></div>
+          <h4>Силуэт. Картина 3</h4>
+          <p class="spec">2026 · акрил, текстурная паста<br>18 × 24 см · в раме</p>
+          <div class="row"><span class="price">3 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/20.jpg" alt="Работа: сидящая женская фигура со спины, зелёная рама" loading="lazy"></div>
+          <h4>Силуэт. Картина 4</h4>
+          <p class="spec">2026 · акрил, текстурная паста<br>18 × 24 см · в раме</p>
+          <div class="row"><span class="price">3 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/21.jpg" alt="Работа: лежащая женская фигура синими чернилами, синяя рама" loading="lazy"></div>
+          <h4>Силуэт. Картина 5</h4>
+          <p class="spec">2026 · акрил, текстурная паста<br>18 × 24 см · в раме</p>
+          <div class="row"><span class="price">3 000 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+      </div>
+    </section>
+    <section class="page" id="page-otdelno">
+      <p class="crumb">Работы</p>
+      <h1 class="t">Отдельные работы</h1>
+      <p class="lede">Работы вне серий: живопись маслом на холсте.</p>
+      
+      <div class="grid">
+        <article class="work">
+          <div class="fig"><img src="img/22.jpg" alt="Картина маслом: объятие двух фигур, вокруг холста белая ткань" loading="lazy"></div>
+          <h4>Не по сценарию</h4>
+          <p class="spec">2026 · масло, холст на подрамнике<br>50 × 50 см · с дополнительной рамой</p>
+          <div class="row"><span class="price">34 560 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+        <article class="work">
+          <div class="fig"><img src="img/23.jpg" alt="Картина маслом: открытая книга в руке, голубые ветви на жёлтом фоне" loading="lazy"></div>
+          <h4>Свет</h4>
+          <p class="spec">2026 · холст, масло<br>40 × 60 см</p>
+          <div class="row"><span class="price">12 500 ₽</span><a class="buy" data-go="contacts">Купить</a></div>
+        </article>
+      </div>
+    </section>
+    <section class="page" id="page-order">
+      <p class="crumb">По вашей фотографии</p>
+      <h1 class="t">Картина по фото</h1>
+      <p class="lede">Вы присылаете фотографию — я пишу по ней картину акрилом или маслом. Чаще всего заказывают дом, в котором выросли, свой двор, дачу или место, которого больше нет. Работаю из Москвы, отправляю по России.</p>
+      <div class="steps-track" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="steps">
+        <div class="step"><b>1</b><p>Присылаете фото и говорите желаемый размер</p></div>
+        <div class="step"><b>2</b><p>Я называю точную цену и срок, беру предоплату 50%</p></div>
+        <div class="step"><b>3</b><p>Показываю работу на середине — правки вносим здесь</p></div>
+        <div class="step"><b>4</b><p>Отправляю готовую картину по России</p></div>
+      </div>
+      <h3 style="font-size:24px;font-weight:400;margin-top:34px">Сколько стоит картина по фото</h3>
+      <div class="table-wrap">
+        <table class="pt">
+          <thead><tr><th>Размер</th><th>Акрил</th><th>Масло</th></tr></thead>
+          <tbody>
+            <tr><td>30 × 40 см</td><td>8 000 ₽</td><td>10 000 ₽</td></tr>
+            <tr><td>50 × 50 см</td><td>11 000 ₽</td><td>13 000 ₽</td></tr>
+            <tr><td>50 × 70 см</td><td>13 000 ₽</td><td>15 000 ₽</td></tr>
+            <tr><td>75 × 100 см</td><td>22 000 ₽</td><td>25 000 ₽</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">Это примеры размеров — можно выбрать любой другой, обсудим отдельно. Дополнительно оплачиваются второй и каждый следующий человек в кадре, срочность, рама и доставка за пределы Москвы.</p>
+      <h3 style="font-size:24px;font-weight:400;margin-top:34px">Почему заказ дешевле работ из галереи</h3>
+      <p class="lede" style="margin-top:10px">Работы из серий — часть выставочных проектов. У каждой свой сюжет, часто объёмные материалы: глина, ткань, воск, стекло. Они существуют в единственном экземпляре и уже висели в галерее. Картина по фотографии — другая задача: сюжет предлагаете вы, техника проще, холст и краска. Поэтому и цена ниже.</p>
+      <h3 style="font-size:24px;font-weight:400;margin-top:34px">Что нужно от вас</h3>
+      <p class="lede" style="margin-top:10px">Фотография, снятая при дневном свете, без сильных теней и бликов. Подойдёт и старый снимок из семейного альбома — его можно просто переснять телефоном. Если людей в кадре нет, но вы хотите их добавить, пришлите отдельные фото.</p>
+      <h3 style="font-size:24px;font-weight:400;margin-top:36px">Частые вопросы</h3>
+      <div class="faq">
+        <div class="faq-i open">
+          <button class="faq-q" type="button" aria-expanded="true">Можно выбрать размер, которого нет в таблице?<span class="pm" aria-hidden="true"></span></button>
+          <div class="faq-a"><div><p>Да, любой. Напишите желаемые пропорции — посчитаю цену отдельно.</p></div></div>
+        </div>
+        <div class="faq-i">
+          <button class="faq-q" type="button" aria-expanded="false">Можно заказать картину в подарок?<span class="pm" aria-hidden="true"></span></button>
+          <div class="faq-a"><div><p>Да. Скажите, к какой дате нужно, и я отвечу, успеваю ли. Чаще всего дарят на новоселье, свадьбу и юбилей.</p></div></div>
+        </div>
+        <div class="faq-i">
+          <button class="faq-q" type="button" aria-expanded="false">Какая фотография подойдёт?<span class="pm" aria-hidden="true"></span></button>
+          <div class="faq-a"><div><p>Снятая при дневном свете, без резких теней и бликов. Старый снимок из семейного альбома тоже годится — его можно переснять телефоном.</p></div></div>
+        </div>
+        <div class="faq-i">
+          <button class="faq-q" type="button" aria-expanded="false">Чем акрил отличается от масла?<span class="pm" aria-hidden="true"></span></button>
+          <div class="faq-a"><div><p>Акрил суше и графичнее, масло даёт более мягкие переходы и глубину цвета. На масло уходит больше времени, поэтому оно дороже.</p></div></div>
+        </div>
+        <div class="faq-i">
+          <button class="faq-q" type="button" aria-expanded="false">Как проходят оплата и доставка?<span class="pm" aria-hidden="true"></span></button>
+          <div class="faq-a"><div><p>Обсуждаем в переписке: предоплата 50%, остальное после того, как покажу готовую работу. Отправляю по России.</p></div></div>
+        </div>
+      </div>
+      <p style="margin-top:26px"><a class="buy" data-go="contacts" style="font-size:13px;padding:11px 22px">Обсудить заказ</a></p>
+    </section>
+    <section class="page" id="page-expo">
+      <p class="crumb">Где можно было увидеть работы</p>
+      <h1 class="t">Выставки</h1>
+      <p class="lede">Одна персональная и пять групповых выставок, фильм и обложка сингла. Картины с выставок продаются — они собраны в разделе «Работы».</p>
+      <section class="expo">
+        <p class="badge" style="margin-bottom:12px">Персональная выставка</p><div class="expo-head"><h3>«Когда трава была выше»</h3><span class="when">Декабрь 2025</span></div>
+        <p class="where">Галерея «Беляево», Объединение «Выставочные залы Москвы», Москва</p>
+        <p class="about">Эмоциональная карта детства, подросткового периода и первых шагов во взрослую жизнь. Восемь дней в галерее, живопись и доска объявлений, на которой зрители оставляли записки.</p>
+      <div class="shots big">
+        <figure><img src="img/24.jpg" alt="«Мы станем лучше» на мольберте в центре зала" loading="lazy"></figure>
+        <figure><img src="img/25.jpg" alt="Стена серии «Когда стало тесно»" loading="lazy"></figure>
+        <figure><img src="img/26.jpg" alt="Стена серии «Где всё начиналось»" loading="lazy"></figure>
+        <figure><img src="img/27.jpg" alt="Зрительница у «Волшебной зимы»" loading="lazy"></figure>
+        <figure><img src="img/28.jpg" alt="Доска объявлений: зрители оставляли записки" loading="lazy"></figure>
+        <figure><img src="img/29.jpg" alt="Гости на открытии" loading="lazy"></figure>
+        <figure><img src="img/30.jpg" alt="Открытие выставки" loading="lazy"></figure>
+        <figure><img src="img/31.jpg" alt="Подписываю открытки гостям" loading="lazy"></figure>
+      </div>
+      </section>
+      <section class="expo">
+        <p class="badge" style="margin-bottom:12px">Групповая</p><div class="expo-head"><h3>«Горизонт событий»</h3><span class="when">Июнь — июль 2026</span></div>
+        <p class="where">Арт-пространство «Сад», Санкт-Петербург</p>
+        <p class="about"></p>
+      <div class="shots">
+        <figure><img src="img/32.jpg" alt="«Мы станем лучше» на подвесе" loading="lazy"></figure>
+        <figure><img src="img/33.jpg" alt="Зал выставки" loading="lazy"></figure>
+        <figure><img src="img/34.jpg" alt="Съёмка в зале" loading="lazy"></figure>
+        <figure><img src="img/35.jpg" alt="«Утро» в экспозиции" loading="lazy"></figure>
+      </div>
+      </section>
+      <section class="expo">
+        <p class="badge" style="margin-bottom:12px">Групповая</p><div class="expo-head"><h3>«Ах, лето»</h3><span class="when">Июнь — август 2026</span></div>
+        <p class="where">Галерея «Вдохновение», Москва</p>
+        <p class="about"></p>
+      <div class="shots big">
+        <figure><img src="img/36.jpg" alt="Экспозиция «Ах, лето»" loading="lazy"></figure>
+        <figure><img src="img/37.jpg" alt="Развеска работ" loading="lazy"></figure>
+      </div>
+      </section>
+      <section class="expo">
+        <p class="badge" style="margin-bottom:12px">Групповая</p><div class="expo-head"><h3>«Венец творения»</h3><span class="when">2026</span></div>
+        <p class="where">Галерея 676, Иваново</p>
+        <p class="about"></p>
+      <div class="shots">
+        <figure><img src="img/38.jpg" alt="Фактура работы крупным планом" loading="lazy"></figure>
+        <figure><img src="img/39.jpg" alt="«postscriptum», деталь" loading="lazy"></figure>
+        <figure><img src="img/40.jpg" alt="Открытие" loading="lazy"></figure>
+        <figure><img src="img/41.jpg" alt="Зрители у работ" loading="lazy"></figure>
+      </div>
+      </section>
+      <section class="expo">
+        <p class="badge" style="margin-bottom:12px">Групповая</p><div class="expo-head"><h3>Смотровая площадка «Над Москвой»</h3><span class="when">2026</span></div>
+        <p class="where">Башня «Федерация», Москва-Сити, Москва</p>
+        <p class="about"></p>
+      <div class="shots">
+        <figure><img src="img/42.jpg" alt="Работы на фоне панорамы Москвы" loading="lazy"></figure>
+        <figure><img src="img/43.jpg" alt="Экспозиция на смотровой" loading="lazy"></figure>
+        <figure><img src="img/44.jpg" alt="Вид с башни «Федерация»" loading="lazy"></figure>
+      </div>
+      </section>
+      <section class="expo">
+        <p class="badge" style="margin-bottom:12px">Групповые · онлайн</p><div class="expo-head"><h3>«Дорогое моё искусство» и «Пока мы не выросли»</h3><span class="when">Май и июнь 2025</span></div>
+        <p class="where">Онлайн-галерея «Галерист» во ВКонтакте</p>
+        <p class="about">Онлайн-выставки: работы показывали в приложении, фотографий экспозиции нет — остались сертификаты участника.</p>
+      <div class="shots doc">
+        <figure><img src="img/45.jpg" alt="Сертификат участника, май 2025" loading="lazy"></figure>
+        <figure><img src="img/46.jpg" alt="Сертификат участника, июнь 2025" loading="lazy"></figure>
+      </div>
+      </section>
+      <section class="expo">
+        <p class="badge" style="margin-bottom:12px">Работы вне галерей</p><div class="expo-head"><h3>Фильм «Когда Атлант устанет»</h3><span class="when">2026</span></div>
+        <p class="where">Режиссёр Валерий Афримович</p>
+        <p class="about">Картина «postscriptum» вошла в декорации полнометражного фильма. В титрах — отдельная строка: художник Алина Степанова.</p>
+      <div class="shots wide">
+        <figure><img src="img/47.jpg" alt="Кадр из фильма" loading="lazy"></figure>
+        <figure><img src="img/48.jpg" alt="Кадр из фильма: работа в интерьере" loading="lazy"></figure>
+        <figure><img src="img/49.jpg" alt="«postscriptum» в декорациях" loading="lazy"></figure>
+        <figure><img src="img/50.jpg" alt="Титры фильма" loading="lazy"></figure>
+      </div>
+      </section>
+      <section class="expo">
+        <p class="badge" style="margin-bottom:12px">Работы вне галерей</p><div class="expo-head"><h3>Обложка сингла Nellmora — «Блюр»</h3><span class="when">2025</span></div>
+        <p class="where">Написана акрилом на холсте</p>
+        <p class="about"></p>
+      <div class="shots big">
+        <figure><img src="img/51.jpg" alt="Картина для обложки сингла" loading="lazy"></figure>
+        <figure><img src="img/52.jpg" alt="Сингл «Блюр» в стримингах" loading="lazy"></figure>
+      </div>
+      </section>
+    </section>
+    <section class="page" id="page-about">
+      <p class="crumb">Об авторе</p>
+      <h1 class="t">Алина Степанова</h1>
+      <div class="about-grid">
+        <figure style="margin:0">
+          <img src="img/53.jpg" alt="Алина Степанова на открытии персональной выставки" style="border:1px solid var(--line)">
+          <figcaption style="font-size:12.5px;color:var(--dim);margin-top:9px">Открытие выставки «Когда трава была выше», декабрь 2025</figcaption>
+        </figure>
+        <div class="about-txt">
+          <p>Самоучка с налётом образования и желанием творить. Живу и работаю в Москве. Работаю в двух направлениях, и они не спорят друг с другом, а дополняют.</p>
+          <p>В первом главный герой — человек: я исследую внутренние процессы и эмоции личности и совмещаю в одной работе ткань, глину, свечи, стекло. Это работы в объёме, попытка выйти за рамки и стереть грань между творчеством и внутренним миром человека.</p>
+          <p class="pull">Во втором главный герой — пейзаж. Он раскрывает чувства не через сюжет, а через среду.</p>
+          <p>Картины отражают ностальгию, отсылают к определённому периоду в прошлом. Я не описываю конкретное место: все работы — собирательные образы. И хотя они основаны на личных переживаниях, чаще всего оказывается, что переживание общее — люди узнают в них свой двор, свой подъезд и своё лето.</p>
+          <div style="margin-top:26px;padding:20px;border:1px solid var(--line);background:var(--field)">
+            <h3 style="font-size:20px;font-weight:400;margin-bottom:8px">Галереям и кураторам</h3>
+            <p style="font-size:14px;color:var(--dim)">Участвую в групповых проектах и готова к персональным. Есть портфолио в PDF, работы в наличии разных форматов — от 18 × 24 до 100 × 120 см, живопись и объёмные работы в смешанной технике. Пишите в телеграм <a href="https://t.me/sss_tt_ep" style="border-bottom:1px solid var(--line-2)">@sss_tt_ep</a> или на почту.</p>
+          </div>
+          <div class="cv">
+            <div>
+              <h4>Образование</h4>
+              <ul>
+                <li><b>Январь — ноябрь 2026</b><span>Курс «Как стать искусствоведом», дополнительное высшее образование</span></li>
+                <li><b>2020 — 2024</b><span>Самарский национальный исследовательский университет имени академика С. П. Королёва, бакалавр</span></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Персональная выставка</h4>
+              <ul>
+                <li><b>Декабрь 2025</b><span>«Когда трава была выше», галерея «Беляево», Москва</span></li>
+              </ul>
+              <h4 style="margin-top:22px">Публикации</h4>
+              <ul>
+                <li><b>Декабрь 2025</b><span>Серия видеороликов к персональной выставке, галерея «Беляево» Объединения «ВЗ Москвы»</span></li>
+                <li><b>Январь 2022</b><span>«Картины в полёте», молодёжное медиа «Качели» №34</span></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Групповые выставки</h4>
+              <ul>
+                <li><b>Июнь — июль 2026</b><span>«Горизонт событий», арт-пространство «Сад», Санкт-Петербург</span></li>
+                <li><b>Июнь — август 2026</b><span>«Ах, лето», галерея «Вдохновение», Москва</span></li>
+                <li><b>2026</b><span>«Венец творения», галерея 676, Иваново</span></li>
+                <li><b>2026</b><span>Смотровая площадка «Над Москвой», башня «Федерация», Москва-Сити</span></li>
+                <li><b>Июнь 2025</b><span>«Пока мы не выросли», онлайн-галерея «Галерист» во ВКонтакте</span></li>
+                <li><b>Май 2025</b><span>«Дорогое моё искусство», онлайн-галерея «Галерист» во ВКонтакте</span></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Работы вне галерей</h4>
+              <ul>
+                <li><b>2026</b><span>Картина «postscriptum» в декорациях фильма «Когда Атлант устанет», реж. Валерий Афримович</span></li>
+                <li><b>2025</b><span>Обложка сингла Nellmora — «Блюр», акрил на холсте</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="page-contacts">
+      <p class="crumb">Связаться</p>
+      <h1 class="t">Напишите мне</h1>
+      <p class="lede">Отвечаю в течение дня. Если хотите картину по фотографии — сразу приложите её, так ответ будет быстрее и точнее. Расскажу про доставку, оплату и сроки в переписке.</p>
+      <ul class="clist">
+        <li><span>Телеграм</span><a href="https://t.me/sss_tt_ep">@sss_tt_ep</a><em>Личные сообщения — самый быстрый способ</em></li>
+        <li><span>Канал</span><a href="https://t.me/stepalink">@stepalink</a><em>Новые работы и процесс</em></li>
+        <li><span>Инстаграм</span><a href="https://instagram.com/stepalinka">@stepalinka</a></li>
+        <li><span>Почта</span><a href="mailto:stepalina2002@mail.ru">stepalina2002@mail.ru</a></li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Алина Степанова", "jobTitle": "Художник", "url": "https://stepalinka-art.ru", "address": {"@type": "PostalAddress", "addressLocality": "Москва", "addressCountry": "RU"}, "sameAs": ["https://t.me/stepalink", "https://instagram.com/stepalinka"], "email": "stepalina2002@mail.ru", "alumniOf": "Самарский национальный исследовательский университет имени академика С. П. Королёва", "knowsAbout": ["живопись", "акрил", "масло", "смешанная техника", "картина на заказ по фотографии"], "makesOffer": {"@type": "Offer", "name": "Картина по фотографии на заказ", "priceCurrency": "RUB", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 8000, "priceCurrency": "RUB"}, "areaServed": "RU"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Картины Алины Степановой в продаже", "numberOfItems": 22, "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "VisualArtwork", "name": "разГОРИсь", "artform": "Смешанная техника", "artMedium": "смешанная техника: восковые свечи, клей, акрил, холст", "dateCreated": "2026", "width": "70 × 70 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 48500, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 2, "item": {"@type": "VisualArtwork", "name": "postscriptum", "artform": "Смешанная техника", "artMedium": "смешанная техника: папье-маше, самозастывающая глина, акрил, холст", "dateCreated": "2026", "width": "50 × 50 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 48500, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 3, "item": {"@type": "VisualArtwork", "name": "Ранимость", "artform": "Смешанная техника", "artMedium": "смешанная техника: глина, стекло, ткань, акрил, холст", "dateCreated": "2026", "width": "50 × 70 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 45400, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 4, "item": {"@type": "VisualArtwork", "name": "Красота", "artform": "Смешанная техника", "artMedium": "смешанная техника: текстурная паста, акрил, ткань", "dateCreated": "2024", "width": "50 × 70 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 45400, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 5, "item": {"@type": "VisualArtwork", "name": "Я снова ничего не поняла", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2025–2026", "width": "100 × 120 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 115000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 6, "item": {"@type": "VisualArtwork", "name": "За окном", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2025", "width": "80 × 120 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 67000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 7, "item": {"@type": "VisualArtwork", "name": "Детство. Волшебная зима", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2025", "width": "50 × 50 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 15000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 8, "item": {"@type": "VisualArtwork", "name": "Фруктовая феерия", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2024", "width": "50 × 70 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 15000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 9, "item": {"@type": "VisualArtwork", "name": "Утро", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2023", "width": "50 × 70 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 10000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 10, "item": {"@type": "VisualArtwork", "name": "Детство. Беззаботное лето", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2025", "width": "50 × 50 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 8000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 11, "item": {"@type": "VisualArtwork", "name": "Триптих «Где попало»", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2024", "width": "40 × 50, 30 × 40, 20 × 30 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 12000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 12, "item": {"@type": "VisualArtwork", "name": "Юность. Весна", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2025", "width": "50 × 50 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 9000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 13, "item": {"@type": "VisualArtwork", "name": "Раз в году", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2023", "width": "30 × 40 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 6000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 14, "item": {"@type": "VisualArtwork", "name": "Поганая молодежь", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2023", "width": "30 × 40 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 6000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 15, "item": {"@type": "VisualArtwork", "name": "Мы станем лучше", "artform": "Живопись", "artMedium": "холст, акрил", "dateCreated": "2023", "width": "75 × 100 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 45000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 16, "item": {"@type": "VisualArtwork", "name": "Силуэт. Картина 1", "artform": "Смешанная техника", "artMedium": "акрил, текстурная паста", "dateCreated": "2026", "width": "18 × 24 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 3000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 17, "item": {"@type": "VisualArtwork", "name": "Силуэт. Картина 2", "artform": "Смешанная техника", "artMedium": "акрил, текстурная паста", "dateCreated": "2026", "width": "18 × 24 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 3000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 18, "item": {"@type": "VisualArtwork", "name": "Силуэт. Картина 3", "artform": "Смешанная техника", "artMedium": "акрил, текстурная паста", "dateCreated": "2026", "width": "18 × 24 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 3000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 19, "item": {"@type": "VisualArtwork", "name": "Силуэт. Картина 4", "artform": "Смешанная техника", "artMedium": "акрил, текстурная паста", "dateCreated": "2026", "width": "18 × 24 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 3000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 20, "item": {"@type": "VisualArtwork", "name": "Силуэт. Картина 5", "artform": "Смешанная техника", "artMedium": "акрил, текстурная паста", "dateCreated": "2026", "width": "18 × 24 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 3000, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 21, "item": {"@type": "VisualArtwork", "name": "Свет", "artform": "Живопись", "artMedium": "холст, масло", "dateCreated": "2026", "width": "40 × 60 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 12500, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}, {"@type": "ListItem", "position": 22, "item": {"@type": "VisualArtwork", "name": "Не по сценарию", "artform": "Живопись", "artMedium": "масло, холст на подрамнике", "dateCreated": "2026", "width": "50 × 50 см", "creator": {"@type": "Person", "name": "Алина Степанова"}, "offers": {"@type": "Offer", "price": 34560, "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "seller": {"@type": "Person", "name": "Алина Степанова"}}}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько стоит картина по фотографии?", "acceptedAnswer": {"@type": "Answer", "text": "30 × 40 см — 8 000 ₽ акрилом и 10 000 ₽ маслом, 50 × 50 см — 11 000 и 13 000 ₽, 50 × 70 см — 13 000 и 15 000 ₽, 75 × 100 см — 22 000 и 25 000 ₽. Точную цену называю после того, как увижу фотографию."}}, {"@type": "Question", "name": "Можно выбрать размер, которого нет в таблице?", "acceptedAnswer": {"@type": "Answer", "text": "Да, любой. Напишите желаемые пропорции — посчитаю цену отдельно."}}, {"@type": "Question", "name": "Можно заказать картину в подарок?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Скажите, к какой дате нужно, и я отвечу, успеваю ли. Чаще всего дарят на новоселье, свадьбу и юбилей."}}, {"@type": "Question", "name": "Какая фотография подойдёт для картины?", "acceptedAnswer": {"@type": "Answer", "text": "Снятая при дневном свете, без резких теней и бликов. Старый снимок из семейного альбома тоже годится — его можно переснять телефоном."}}, {"@type": "Question", "name": "Чем акрил отличается от масла?", "acceptedAnswer": {"@type": "Answer", "text": "Акрил суше и графичнее, масло даёт более мягкие переходы и глубину цвета. На масло уходит больше времени, поэтому оно дороже."}}, {"@type": "Question", "name": "Как проходят оплата и доставка?", "acceptedAnswer": {"@type": "Answer", "text": "Предоплата 50%, остальное после того, как покажу готовую работу. Отправляю по России."}}]}</script>
+
+<!-- Счётчик Яндекс.Метрики и верификация Вебмастера подключаются на боевом домене:
+     сюда встанет код счётчика с вашим номером, а в <head> — мета-тег подтверждения прав.
+     В прототипе они отключены намеренно: иначе считались бы просмотры макета. -->
+
+<script>
+  var links = [].slice.call(document.querySelectorAll('[data-go]'));
+  var pages = [].slice.call(document.querySelectorAll('.page'));
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) document.documentElement.classList.add('anim');
+  function play(page) {
+    if (reduce || !page) return;
+    var els = page.querySelectorAll('.steps, .steps-track, .faq');
+    els.forEach(function (el) { el.classList.remove('in'); });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        els.forEach(function (el) { el.classList.add('in'); });
+      });
+    });
+  }
+  var META = {
+    home:['Алина Степанова — картины о панельках и детстве, Москва','Художник Алина Степанова: купить оригинал картины акрилом или маслом, заказать картину по фотографии. Москва, доставка по России.'],
+    works:['Купить картину — оригиналы акрилом и маслом | Алина Степанова','Каталог работ художника Алины Степановой: пейзажи и объёмные работы. Оригиналы в единственном экземпляре, отправка по России.'],
+    iznutri:['Серия «Изнутри» — объёмные картины из глины и ткани','Объёмные работы на стену: глина, ткань, свечи, стекло. Смешанная техника, каждая работа в одном экземпляре.'],
+    holmy:['Серия «Холмы» — большие картины с пейзажем','Крупные пейзажи 80×120 и 100×120 см для гостиной. Написаны после поездок по регионам России.'],
+    trava:['«Когда трава была выше» — картины про детство и панельки','Проект о взрослении: советские дворы, пятиэтажки, деревенское лето. Показан на персональной выставке в галерее «Беляево».'],
+    siluet:['Серия «Силуэт» — небольшие картины о женщинах','Пять работ 18×24 см в рамах. Подойдут для интерьера и в подарок.'],
+    otdelno:['Отдельные работы — живопись маслом','Картины вне серий: масло на холсте.'],
+    order:['Картина по фото на заказ в Москве — Алина Степанова','Напишу картину по вашей фотографии: дом, двор, дача, место из детства. Акрил или масло, любой размер, цены от 8 000 ₽.'],
+    expo:['Выставки Алины Степановой — Беляево, Москва-Сити, Иваново','Персональная выставка «Когда трава была выше» и пять групповых. Работа в декорациях фильма и обложка сингла.'],
+    about:['Художник Алина Степанова — биография, CV, выставки','Живу и работаю в Москве. Пейзаж и объёмные работы. Полное CV, публикации, сотрудничество с галереями.'],
+    contacts:['Контакты художника Алины Степановой','Телеграм, почта и социальные сети. Отвечаю в течение дня.']
+  };
+  function meta(id) {
+    var m = META[id]; if (!m) return;
+    document.title = m[0];
+    var d = document.querySelector('meta[name="description"]');
+    if (!d) { d = document.createElement('meta'); d.name = 'description'; document.head.appendChild(d); }
+    d.setAttribute('content', m[1]);
+  }
+  function go(id, scroll) {
+    meta(id);
+    pages.forEach(function (p) { p.classList.toggle('on', p.id === 'page-' + id); });
+    play(document.getElementById('page-' + id));
+    document.querySelectorAll('.menu a').forEach(function (a) {
+      a.classList.toggle('on', a.dataset.go === id);
+    });
+    if (scroll) {
+      var m = document.querySelector('.main');
+      if (m) m.scrollIntoView({ block: 'start' });
+    }
+    try { history.replaceState(null, '', '#' + id); } catch (e) {}
+  }
+  links.forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); go(a.dataset.go, true); });
+  });
+  document.addEventListener('click', function (e) {
+    var q = e.target.closest && e.target.closest('.faq-q');
+    if (!q) return;
+    var item = q.parentNode, open = item.classList.contains('open');
+    item.parentNode.querySelectorAll('.faq-i').forEach(function (i) {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!open) { item.classList.add('open'); q.setAttribute('aria-expanded', 'true'); }
+  });
+
+  var start = (location.hash || '#home').slice(1);
+  go(document.getElementById('page-' + start) ? start : 'home', false);
+
+</script>
+
+</body>
+</html>
