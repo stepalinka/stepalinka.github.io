@@ -211,6 +211,21 @@
   .hero-img{border:1px solid var(--line);background:var(--field);margin-top:clamp(20px,2.4vw,32px);max-width:520px}
   .hero-img img{width:100%;height:auto}
   .hero-cap{font-size:12.5px;color:var(--dim);margin-top:10px;max-width:520px}
+  .fig img,.shots img,.hero-img img{cursor:zoom-in}
+  .lb{position:fixed;inset:0;z-index:100;background:#0E0E0C;display:none;flex-direction:column;color:#EDEAE1;touch-action:pan-y}
+  .lb.on{display:flex}
+  .lb-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:56px 16px 8px}
+  .lb-stage img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+  .lb-cap{padding:10px 16px 18px;text-align:center;font-size:13.5px;color:#C9C5BA;min-height:48px}
+  .lb-cap b{display:block;font-family:var(--display);font-weight:400;font-size:18px;color:#FFF}
+  .lb button{position:absolute;border:0;background:none;color:#FFF;cursor:pointer;width:52px;height:52px;font-size:28px;line-height:1;opacity:.8}
+  .lb button:hover{opacity:1}
+  .lb-close{top:4px;right:4px}
+  .lb-prev,.lb-next{top:50%;transform:translateY(-50%);font-size:40px}
+  .lb-prev{left:4px}.lb-next{right:4px}
+  .lb-count{position:absolute;top:18px;left:18px;font-size:12.5px;color:#9A968B;letter-spacing:.08em}
+  @media(max-width:700px){.lb-prev,.lb-next{top:auto;bottom:8px;transform:none}.lb-cap{padding:10px 60px 18px}}
+  body.lb-open{overflow:hidden}
 </style>
 </head>
 <body>
@@ -495,8 +510,6 @@
         </table>
       </div>
       <p class="fine">Это примеры размеров — можно выбрать любой другой, обсудим отдельно. Дополнительно оплачиваются второй и каждый следующий человек в кадре, срочность, рама и доставка за пределы Москвы.</p>
-      <h3 style="font-size:24px;font-weight:400;margin-top:34px">Почему заказ дешевле работ из галереи</h3>
-      <p class="lede" style="margin-top:10px">Работы из серий — часть выставочных проектов. У каждой свой сюжет, часто объёмные материалы: глина, ткань, воск, стекло. Они существуют в единственном экземпляре и уже висели в галерее. Картина по фотографии — другая задача: сюжет предлагаете вы, техника проще, холст и краска. Поэтому и цена ниже.</p>
       <h3 style="font-size:24px;font-weight:400;margin-top:34px">Что нужно от вас</h3>
       <p class="lede" style="margin-top:10px">Фотография, снятая при дневном свете, без сильных теней и бликов. Подойдёт и старый снимок из семейного альбома — его можно просто переснять телефоном. Если людей в кадре нет, но вы хотите их добавить, пришлите отдельные фото.</p>
       <h3 style="font-size:24px;font-weight:400;margin-top:36px">Частые вопросы</h3>
@@ -694,6 +707,15 @@
      сюда встанет код счётчика с вашим номером, а в <head> — мета-тег подтверждения прав.
      В прототипе они отключены намеренно: иначе считались бы просмотры макета. -->
 
+<div class="lb" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+  <span class="lb-count"></span>
+  <button class="lb-close" type="button" aria-label="Закрыть">✕</button>
+  <div class="lb-stage"><img alt=""></div>
+  <div class="lb-cap"></div>
+  <button class="lb-prev" type="button" aria-label="Предыдущее фото">‹</button>
+  <button class="lb-next" type="button" aria-label="Следующее фото">›</button>
+</div>
+
 <script>
   var links = [].slice.call(document.querySelectorAll('[data-go]'));
   var pages = [].slice.call(document.querySelectorAll('.page'));
@@ -729,7 +751,9 @@
     if (!d) { d = document.createElement('meta'); d.name = 'description'; document.head.appendChild(d); }
     d.setAttribute('content', m[1]);
   }
+  var cur;
   function go(id, scroll) {
+    cur = id;
     meta(id);
     pages.forEach(function (p) { p.classList.toggle('on', p.id === 'page-' + id); });
     play(document.getElementById('page-' + id));
@@ -745,6 +769,7 @@
   }
   window.addEventListener('popstate', function () {
     var id = (location.hash || '#home').slice(1);
+    if (id === cur || document.body.classList.contains('lb-open')) return;
     if (depth > 0) depth--;
     menu(false);
     go(document.getElementById('page-' + id) ? id : 'home', 'pop');
@@ -771,6 +796,62 @@
     });
     if (!open) { item.classList.add('open'); q.setAttribute('aria-expanded', 'true'); }
   });
+
+  (function () {
+    var lb = document.querySelector('.lb'), big = lb.querySelector('.lb-stage img');
+    var cap = lb.querySelector('.lb-cap'), count = lb.querySelector('.lb-count');
+    var list = [], i = 0;
+    function full(img) { return img.getAttribute('src').replace('img/', 'img/full/'); }
+    function caption(img) {
+      var w = img.closest('.work');
+      if (w) {
+        var h = w.querySelector('h4'), sp = w.querySelector('.spec'), pr = w.querySelector('.price');
+        return '<b>' + (h ? h.textContent : '') + '</b>' + (sp ? sp.innerHTML : '') + (pr ? ' · ' + pr.textContent : '');
+      }
+      return img.alt;
+    }
+    function show(n) {
+      i = (n + list.length) % list.length;
+      big.src = full(list[i]); big.alt = list[i].alt;
+      cap.innerHTML = caption(list[i]);
+      count.textContent = list.length > 1 ? (i + 1) + ' / ' + list.length : '';
+      lb.querySelector('.lb-prev').hidden = lb.querySelector('.lb-next').hidden = list.length < 2;
+      [i + 1, i - 1].forEach(function (k) { if (list.length > 1) new Image().src = full(list[(k + list.length) % list.length]); });
+    }
+    function open(img) {
+      var group = img.closest('.grid, .shots') || img.parentNode;
+      list = [].slice.call(group.querySelectorAll('img')); show(list.indexOf(img));
+      lb.classList.add('on'); document.body.classList.add('lb-open');
+      try { history.pushState({ lb: 1 }, '', location.hash); } catch (e) {}
+    }
+    function close(fromPop) {
+      if (!lb.classList.contains('on')) return;
+      lb.classList.remove('on'); document.body.classList.remove('lb-open'); big.removeAttribute('src');
+      if (!fromPop && history.state && history.state.lb) history.back();
+    }
+    document.addEventListener('click', function (e) {
+      var img = e.target.closest && e.target.closest('.fig img, .shots img, .hero-img img');
+      if (img) open(img);
+    });
+    lb.querySelector('.lb-close').addEventListener('click', function () { close(); });
+    lb.querySelector('.lb-prev').addEventListener('click', function () { show(i - 1); });
+    lb.querySelector('.lb-next').addEventListener('click', function () { show(i + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lb-stage')) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('on')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(i - 1);
+      if (e.key === 'ArrowRight') show(i + 1);
+    });
+    var x0 = null, y0 = 0;
+    lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? i + 1 : i - 1);
+    });
+    window.addEventListener('popstate', function () { close(true); });
+  })();
 
   var start = (location.hash || '#home').slice(1);
   go(document.getElementById('page-' + start) ? start : 'home', false);
